@@ -47,14 +47,14 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
                 <div class="sidebar-wrapper">
                     <ul class="nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="./dashboard.html">
+                        <li class="nav-item @ViewBag.Path == '/Dashboard/Index/' ? active : ">
+                            <a class="nav-link" href="/Dashboard/Index/">
                                 <i class="material-icons">dashboard</i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="./home.html">
+                        <li class="nav-item @ViewBag.Path == '/Home/Index/' ? active : ">
+                            <a class="nav-link" href="/Home/Index/">
                                 <i class="material-icons">home</i>
                                 <p>Home</p>
                             </a>
@@ -66,20 +66,20 @@ The above copyright notice and this permission notice shall be included in all c
                             </a>
                             <div id="collapseInfo" class="collapse" data-parent="#accordionInfo">
                                 <ul class="nav-sub-menu">
-                                    <li class="nav-item">
-                                        <a class="nav-link kay" href="./myInformation.html">
+                                    <li class="nav-item @ViewBag.Path == '/MyInformation/Index/' ? active : ">
+                                        <a class="nav-link kay" href="/MyInformation/Index/">
                                             <i class="material-icons">contact_mail</i>
                                             <p>My Information</p>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link kay" href="./myAddresses.html">
+                                    <li class="nav-item @ViewBag.Path == '/MyAddresses/Index/' ? active : ">
+                                        <a class="nav-link kay" href="/MyAddresses/Index/">
                                             <i class="material-icons">dns</i>
                                             <p>My Addresses</p>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link kay" href="./myCards.html">
+                                    <li class="nav-item @ViewBag.Path == '/MyCards/Index/' ? active : ">
+                                        <a class="nav-link kay" href="/MyCards/Index/">
                                             <i class="material-icons">credit_card</i>
                                             <p>My Cards</p>
                                         </a>
@@ -87,56 +87,56 @@ The above copyright notice and this permission notice shall be included in all c
                                 </ul>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./orders.html">
+                        <li class="nav-item @ViewBag.Path == '/Orders/Index/' ? active : ">
+                            <a class="nav-link" href="/Orders/Index/">
                                 <i class="material-icons">shopping_bag</i>
                                 <p>Orders</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./favourite.html">
+                        <li class="nav-item @ViewBag.Path == '/Favourite/Index/' ? active : ">
+                            <a class="nav-link" href="/Favourite/Index/">
                                 <i class="material-icons">star_border</i>
                                 <p>Favourite</p>
                             </a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="./manageCuisines.html">
+                        <li class="nav-item @ViewBag.Path == '/ManageCuisines/Index/' ? active : ">
+                            <a class="nav-link" href="/ManageCuisines/Index/">
                                 <i class="material-icons">kitchen</i>
                                 <p>Manage Cuisines</p>
                             </a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="./manageRestaurants.html">
+                        <li class="nav-item @ViewBag.Path == '/ManageRestaurants/Index/' ? active : ">
+                            <a class="nav-link" href="/ManageRestaurants/Index/">
                                 <i class="material-icons">restaurant</i>
                                 <p>Manage Restaurants</p>
                             </a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="./manageCategories.html">
+                        <li class="nav-item @ViewBag.Path == '/ManageCategories/Index/' ? active : ">
+                            <a class="nav-link" href="/ManageCategories/Index/">
                                 <i class="material-icons">menu</i>
                                 <p>Manage Categories</p>
                             </a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="./manageProducts.html">
+                        <li class="nav-item @ViewBag.Path == '/ManageProducts/Index/' ? active : ">
+                            <a class="nav-link" href="/ManageProducts/Index/">
                                 <i class="material-icons">fastfood</i>
                                 <p>Manage Products</p>
                             </a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="./manageMenus.html">
+                        <li class="nav-item @ViewBag.Path == '/ManageMenus/Index/' ? active : ">
+                            <a class="nav-link" href="/ManageMenus/Index/">
                                 <i class="material-icons">menu_book</i>
                                 <p>Manage Menus</p>
                             </a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="./manageReports.html">
+                        <li class="nav-item '@ViewBag.Path == '/ManageReports/Index/' ? active : ">
+                            <a class="nav-link" href="/ManageReports/Index/">
                                 <i class="material-icons">feed</i>
-                                <p>Reports</p>
+                                <p>Manage Reports</p>
                             </a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="./manageUsers.html">
+                        <li class="nav-item @ViewBag.Path == '/ManageUsers/Index/' ? active : ">
+                            <a class="nav-link" href="/ManageUsers/Index/">
                                 <i class="material-icons">manage_accounts</i>
                                 <p>Manage Users</p>
                             </a>
