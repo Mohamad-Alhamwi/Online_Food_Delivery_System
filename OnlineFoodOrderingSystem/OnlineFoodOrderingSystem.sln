@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.31424.327
+VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineFoodOrderingSystem", "OnlineFoodOrderingSystem.csproj", "{4BB6D205-C293-4714-9F18-C95C4C3AA3B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineFoodOrderingSystem", "OnlineFoodOrderingSystem\OnlineFoodOrderingSystem.csproj", "{5C92353D-4356-4885-AFCB-52033F596C00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4BB6D205-C293-4714-9F18-C95C4C3AA3B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4BB6D205-C293-4714-9F18-C95C4C3AA3B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4BB6D205-C293-4714-9F18-C95C4C3AA3B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4BB6D205-C293-4714-9F18-C95C4C3AA3B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C92353D-4356-4885-AFCB-52033F596C00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C92353D-4356-4885-AFCB-52033F596C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C92353D-4356-4885-AFCB-52033F596C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C92353D-4356-4885-AFCB-52033F596C00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {601419CD-EC7D-41CD-AF11-A7904CB765A3}
+		SolutionGuid = {C6DBD9E3-6427-439A-850E-9A1BAFD1B816}
 	EndGlobalSection
 EndGlobal
