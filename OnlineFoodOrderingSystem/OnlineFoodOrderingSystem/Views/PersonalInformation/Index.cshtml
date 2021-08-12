@@ -1,6 +1,9 @@
-﻿@{
+﻿@using OnlineFoodOrderingSystem.Models
+
+@{
     ViewBag.Title = "Personal Information";
 }
+
 
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -17,13 +20,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Fist Name</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" value="@ViewBag.User.first_name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Last Name</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" value="@ViewBag.User.last_name">
                                     </div>
                                 </div>
                             </div>
@@ -33,13 +36,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Email address</label>
-                                        <input type="email" class="form-control">
+                                        <input type="email" class="form-control" value="@ViewBag.User.email">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Phone Number</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" value="@ViewBag.User.phoneNo">
                                     </div>
                                 </div>
                             </div>
@@ -55,48 +58,71 @@
                 <div class="card-header card-header-primary">
                     <h4 class="card-title">
                         Payment Cards
-                        <button type="button" rel="tooltip" title="Add Card" class="btn btn-success btn-link btn-sm text-right">
-                            <i class="material-icons">add</i>
-                        </button>
+                        <a href="/PersonalInformation/CardAdd/">
+                            <button type="button" rel="tooltip" title="Add Card" class="btn btn-success btn-link btn-sm text-right">
+                                <i class="material-icons">add</i>
+                            </button>
+                        </a>
                     </h4>
                 </div>
-                <div class="card mx-auto" style="width: 96%;">
-                    <div class="card-body">
-                        <form>
-                            <h5 class="card-title">
-                                Card Title
-                                <button type="button" rel="tooltip" title="Edit Card" class="btn btn-primary btn-link btn-sm">
-                                    <i class="material-icons">edit</i>
-                                </button>
-                                <button type="button" rel="tooltip" title="Remove Card" class="btn btn-danger btn-link btn-sm">
-                                    <i class="material-icons">close</i>
-                                </button>
-                            </h5>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Expiration Date</label>
-                                            <input type="text" class="form-control">
+                @foreach (PaymentCard card in ViewBag.UserCards)
+                {
+                    if (ViewBag.UserCards.Count == 0 || card == null)
+                    {
+                        <div class="alert alert-info col-md-10  mx-auto">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <i class="material-icons">close</i>
+                            </button>
+                            <span>
+                                You do not have any registered cards yet.
+                            </span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card mx-auto" style="width: 96%;">
+                            <div class="card-body">
+                                <form>
+                                    <h5 class="card-title">
+                                        @card.card_name
+                                        <a href="/PersonalInformation/CardEdit/@card.id">
+                                            <button type="button" rel="tooltip" title="Edit Card" class="btn btn-primary btn-link btn-sm">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                        </a>
+                                        <a href="/PersonalInformation/CardDelete/@card.id">
+                                            <button type="button" rel="tooltip" title="Remove Card" class="btn btn-danger btn-link btn-sm">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </a>
+                                    </h5>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Expiration Date</label>
+                                                    <input type="text" class="form-control" value="@card.expiration_data">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Card Number</label>
+                                                    <input type="text" class="form-control" value="@card.card_no">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">CVV</label>
+                                                    <input type="text" class="form-control" value="@card.cvv">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Card Number</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">CVV</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
-                        </form>
-                    </div>
-                </div>
+                        </div>
+                    }
+                }
             </div>
         </div>
         <div class="col-md-10">
@@ -104,82 +130,105 @@
                 <div class="card-header card-header-primary">
                     <h4 class="card-title">
                         Addresses
-                        <button type="button" rel="tooltip" title="Add Address" class="btn btn-success btn-link btn-sm text-right">
-                            <i class="material-icons">add</i>
-                        </button>
+                        <a href="/PersonalInformation/AddressAdd/">
+                            <button type="button" rel="tooltip" title="Add Address" class="btn btn-success btn-link btn-sm text-right">
+                                <i class="material-icons">add</i>
+                            </button>
+                        </a>
                     </h4>
                 </div>
-                <div class="card mx-auto" style="width: 96%;">
-                    <div class="card-body">
-                        <form>
-                            <h5 class="card-title">
-                                Address Title
-                                <button type="button" rel="tooltip" title="Edit Address" class="btn btn-primary btn-link btn-sm">
-                                    <i class="material-icons">edit</i>
-                                </button>
-                                <button type="button" rel="tooltip" title="Remove Address" class="btn btn-danger btn-link btn-sm">
-                                    <i class="material-icons">close</i>
-                                </button>
-                            </h5>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Neighborhood</label>
-                                            <input type="text" class="form-control">
+                @foreach (Address_ address in ViewBag.UserAddresses)
+                {
+                    if (ViewBag.UserAddresses.Count == 0 || address == null)
+                    {
+                        <div class="alert alert-info col-md-10  mx-auto">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <i class="material-icons">close</i>
+                            </button>
+                            <span>
+                                You do not have any registered address yet.
+                            </span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card mx-auto" style="width: 96%;">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    @address.address_name
+                                    <a href="/PersonalInformation/AddressEdit/@address.id">
+                                        <button type="button" rel="tooltip" title="Edit Address" class="btn btn-primary btn-link btn-sm">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                    </a>
+                                    <a href="/PersonalInformation/AddressDelete/@address.id">
+                                        <button type="button" rel="tooltip" title="Delete Address" class="btn btn-danger btn-link btn-sm">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </a>
+                                </h5>
+                                <br />
+                                <form>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Neighborhood</label>
+                                                    <input type="text" class="form-control" value="@address.neighborhood">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Street</label>
+                                                    <input type="text" class="form-control" value="@address.street">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Building Name</label>
+                                                    <input type="text" class="form-control" value="@address.building_name">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Street</label>
-                                            <input type="text" class="form-control">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Building No</label>
+                                                    <input type="text" class="form-control" value="@address.building_no">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Flat No</label>
+                                                    <input type="text" class="form-control" value="@address.flat_no">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Building Name</label>
-                                            <input type="text" class="form-control">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Town</label>
+                                                    <input type="text" class="form-control" value="@address.town">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">City</label>
+                                                    <input type="text" class="form-control" value="@address.city">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Building No</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Flat No</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Town</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">City</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                        </div>
+                    }
+                }
             </div>
         </div>
-
     </div>
 </div>
