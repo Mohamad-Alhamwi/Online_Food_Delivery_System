@@ -4,11 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OnlineFoodOrderingSystem.Models;
-using OnlineFoodOrderingSystem.viewModel;
 
 namespace OnlineFoodOrderingSystem.Controllers
 {
-    public class PersonalInformationController : Controller
+    public class UserInfoController : Controller
     {
         // GET: PersonalInformation
         public ActionResult Index()
@@ -34,13 +33,24 @@ namespace OnlineFoodOrderingSystem.Controllers
                 userAddresses.Add(m.Address_.FirstOrDefault(x => x.id == temp_address_id));
             }
 
-            ViewBag.SubTitle = "Personal Information";
-            ViewBag.Path = "/PersonalInformation/Index/";
+            ViewBag.SubTitle = "User Information";
+            ViewBag.Path = "/UserInfo/Index/";
             ViewBag.User = user;
             ViewBag.UserCards = userPaymentCards;
             ViewBag.UserAddresses = userAddresses;
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult UserInfoCardDelete(PaymentCard card)
+        {
+            Model1 m = new Model1();
+            card = m.PaymentCard.FirstOrDefault(x => x.id == card.id);
+            m.PaymentCard.Remove(card);
+            m.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

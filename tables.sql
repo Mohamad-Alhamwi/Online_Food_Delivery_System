@@ -44,7 +44,6 @@ CREATE TABLE Address_(
 	building_name NVARCHAR(50) NOT NULL,
 	building_no INT NOT NULL,
 	flat_no INT NOT NULL,
-	CONSTRAINT UN_AddressName UNIQUE (address_name),
 	PRIMARY KEY (id)
 );
 
