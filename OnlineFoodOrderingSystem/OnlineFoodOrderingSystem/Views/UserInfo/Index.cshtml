@@ -58,7 +58,7 @@
                 <div class="card-header card-header-primary">
                     <h4 class="card-title">
                         Payment Cards
-                        <a href="/PersonalInformation/CardAdd/">
+                        <a href="/UserInfo/UserInfoCardAdd/">
                             <button type="button" rel="tooltip" title="Add Card" class="btn btn-success btn-link btn-sm text-right">
                                 <i class="material-icons">add</i>
                             </button>
@@ -69,10 +69,7 @@
                 {
                     if (ViewBag.UserCards.Count == 0 || card == null)
                     {
-                        <div class="alert alert-info col-md-10  mx-auto">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <i class="material-icons">close</i>
-                            </button>
+                        <div class="alert alert-warning col-md-10  mx-auto" style="margin-top:20px">
                             <span>
                                 You do not have any registered cards yet.
                             </span>
@@ -161,10 +158,7 @@
                 {
                     if (ViewBag.UserAddresses.Count == 0 || address == null)
                     {
-                        <div class="alert alert-info col-md-10  mx-auto">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <i class="material-icons">close</i>
-                            </button>
+                        <div class="alert alert-warning col-md-10  mx-auto" style="margin-top:20px">
                             <span>
                                 You do not have any registered address yet.
                             </span>

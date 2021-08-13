@@ -42,6 +42,36 @@ namespace OnlineFoodOrderingSystem.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult UserInfoCardAdd()
+        {
+            PaymentCard card = new PaymentCard();
+            return View(card);
+        }
+
+        [HttpPost]
+        public ActionResult UserInfoCardAdd(PaymentCard card)
+        {
+            Model1 m = new Model1();
+            PaymentCard c = m.PaymentCard.FirstOrDefault(x => x.id == card.id);
+
+            if (c == null)
+            {
+                m.PaymentCard.Add(card);
+            }
+            else
+            {
+                c.card_no = card.card_no;
+                c.card_name = card.card_name;
+                c.cvv = card.cvv;
+                c.expiration_data = card.expiration_data;
+            }
+
+            m.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         public ActionResult UserInfoCardDelete(PaymentCard card)
         {
