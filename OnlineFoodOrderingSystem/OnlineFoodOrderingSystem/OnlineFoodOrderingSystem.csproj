@@ -414,7 +414,7 @@
     <Content Include="Views\UserInfo\Index.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\UserInfo\UserInfoCardAdd.cshtml" />
+    <Content Include="Views\UserInfo\AddCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

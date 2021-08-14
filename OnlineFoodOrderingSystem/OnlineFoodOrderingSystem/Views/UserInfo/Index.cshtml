@@ -58,7 +58,7 @@
                 <div class="card-header card-header-primary">
                     <h4 class="card-title">
                         Payment Cards
-                        <a href="/UserInfo/UserInfoCardAdd/">
+                        <a href="/UserInfo/AddCard/">
                             <button type="button" rel="tooltip" title="Add Card" class="btn btn-success btn-link btn-sm text-right">
                                 <i class="material-icons">add</i>
                             </button>
@@ -81,12 +81,13 @@
                             <div class="card-body">
                                 <h5 class="card-title">
                                     @card.card_name
-                                    <!-- Button trigger edit modal -->
-                                    <button type="button" rel="tooltip" title="Edit Card" class="btn btn-primary btn-link btn-sm" data-toggle="modal" data-target="#editModal">
-                                        <i class="material-icons">edit</i>
-                                    </button>
+                                    <a href="/UserInfo/UpdateCard/@card.id">
+                                        <button type="button" rel="tooltip" title="Update Card" class="btn btn-primary btn-link btn-sm">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                    </a>
                                     <!-- Button trigger delete modal -->
-                                    <button type="button" rel="tooltip" title="Remove Card" class="btn btn-danger btn-link btn-sm" data-toggle="modal" data-target="#deleteModal">
+                                    <button type="button" rel="tooltip" title="Delete Card" class="btn btn-danger btn-link btn-sm" data-toggle="modal" data-target="#deleteModal">
                                         <i class="material-icons">close</i>
                                     </button>
                                 </h5>
@@ -104,7 +105,7 @@
                                                 Are you sure you want to delete the @card.card_name?
                                             </div>
                                             <div class="modal-footer">
-                                                <form action="/UserInfo/UserInfoCardDelete/@card.id" method="post">
+                                                <form action="/UserInfo/DeleteCard/@card.id" method="post">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                     <input type="submit" class="btn btn-danger" name="name" value="Yes" />
                                                 </form>

@@ -43,14 +43,14 @@ namespace OnlineFoodOrderingSystem.Controllers
         }
 
         [HttpGet]
-        public ActionResult UserInfoCardAdd()
+        public ActionResult AddCard()
         {
             PaymentCard card = new PaymentCard();
             return View(card);
         }
 
         [HttpPost]
-        public ActionResult UserInfoCardAdd(PaymentCard card)
+        public ActionResult AddCard(PaymentCard card)
         {
             Model1 m = new Model1();
             PaymentCard c = m.PaymentCard.FirstOrDefault(x => x.id == card.id);
@@ -73,7 +73,7 @@ namespace OnlineFoodOrderingSystem.Controllers
         }
 
         [HttpPost]
-        public ActionResult UserInfoCardDelete(PaymentCard card)
+        public ActionResult DeleteCard(PaymentCard card)
         {
             Model1 m = new Model1();
             card = m.PaymentCard.FirstOrDefault(x => x.id == card.id);
@@ -81,6 +81,14 @@ namespace OnlineFoodOrderingSystem.Controllers
             m.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+        
+        [HttpGet]
+        public ActionResult UpdateCard(int id)
+        {
+            Model1 m = new Model1();
+            PaymentCard card = m.PaymentCard.FirstOrDefault(x => x.id == id);
+            return View("AddCard", card);
         }
     }
 }
