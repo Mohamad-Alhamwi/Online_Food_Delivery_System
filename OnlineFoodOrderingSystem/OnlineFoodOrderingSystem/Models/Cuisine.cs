@@ -21,10 +21,6 @@ namespace OnlineFoodOrderingSystem.Models
         [StringLength(50)]
         public string cuisine_name { get; set; }
 
-        public DateTime created_at { get; set; }
-
-        public DateTime? updated_at { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RestaurantCuisine> RestaurantCuisine { get; set; }
     }

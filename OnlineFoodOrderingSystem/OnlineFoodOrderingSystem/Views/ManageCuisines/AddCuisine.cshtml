@@ -1,0 +1,44 @@
+﻿@using OnlineFoodOrderingSystem.Models
+
+@{
+    ViewBag.Title = "Add Cuisine";
+}
+
+@model Cuisine
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header card-header-info">
+                <h4 class="card-title">Cuisine Operations</h4>
+            </div>
+            <div class="card-body">
+                <form action="/ManageCuisines/AddCuisine/" method="post">
+                    @if (Model != null)
+                    {
+                        <input type="hidden" name="id" value="@Model.id" />
+                    }
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Cuisine Name</label>
+                                    @if (Model.cuisine_name == null)
+                                    {
+                                        <input type="text" class="form-control" name="cuisine_name" value="">
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control" name="cuisine_name" value="@Model.cuisine_name">
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-info pull-right">Save</button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
