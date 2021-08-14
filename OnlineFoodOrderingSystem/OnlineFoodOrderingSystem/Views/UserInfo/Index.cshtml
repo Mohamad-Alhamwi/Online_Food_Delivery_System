@@ -14,19 +14,19 @@
                     <p class="card-category">Complete your profile</p>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="/UserInfo/UpdateUser/@ViewBag.User.id" method="post">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Fist Name</label>
-                                        <input type="text" class="form-control" value="@ViewBag.User.first_name">
+                                        <input type="text" class="form-control" name="first_name" value="@ViewBag.User.first_name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Last Name</label>
-                                        <input type="text" class="form-control" value="@ViewBag.User.last_name">
+                                        <input type="text" class="form-control" name="last_name" value="@ViewBag.User.last_name">
                                     </div>
                                 </div>
                             </div>
@@ -36,13 +36,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Email address</label>
-                                        <input type="email" class="form-control" value="@ViewBag.User.email">
+                                        <input type="email" class="form-control" name="email" value="@ViewBag.User.email">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Phone Number</label>
-                                        <input type="text" class="form-control" value="@ViewBag.User.phoneNo">
+                                        <input type="text" class="form-control" name="phoneNo" value="@ViewBag.User.phoneNo">
                                     </div>
                                 </div>
                             </div>
@@ -59,11 +59,12 @@
                     <h4 class="card-title">
                         Payment Cards
                         <a href="/UserInfo/AddCard/">
-                            <button type="button" rel="tooltip" title="Add Card" class="btn btn-success btn-link btn-sm text-right">
+                            <button type="button" rel="tooltip" title="Add Card" class="btn btn-white btn-link btn-sm pull-right">
                                 <i class="material-icons">add</i>
                             </button>
                         </a>
                     </h4>
+                    <p class="card-category">Add your payment cards.</p>
                 </div>
                 @foreach (PaymentCard card in ViewBag.UserCards)
                 {
@@ -149,11 +150,12 @@
                     <h4 class="card-title">
                         Addresses
                         <a href="/PersonalInformation/AddressAdd/">
-                            <button type="button" rel="tooltip" title="Add Address" class="btn btn-success btn-link btn-sm text-right">
+                            <button type="button" rel="tooltip" title="Add Address" class="btn btn-white btn-link btn-sm pull-right">
                                 <i class="material-icons">add</i>
                             </button>
                         </a>
                     </h4>
+                    <p class="card-category">Add your addresse(s).</p>
                 </div>
                 @foreach (Address_ address in ViewBag.UserAddresses)
                 {

@@ -42,6 +42,24 @@ namespace OnlineFoodOrderingSystem.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult UpdateUser(User_ user)
+        {
+            Model1 m = new Model1();
+            User_ u = m.User_.FirstOrDefault(x => x.id == user.id);
+
+            u.first_name = user.first_name;
+            u.last_name = user.last_name;
+            u.email = user.email;
+            u.pwd = "dummyThings";
+            u.phoneNo = user.phoneNo;
+            u.updated_at = DateTime.Now;
+
+            m.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
         [HttpGet]
         public ActionResult AddCard()
         {
