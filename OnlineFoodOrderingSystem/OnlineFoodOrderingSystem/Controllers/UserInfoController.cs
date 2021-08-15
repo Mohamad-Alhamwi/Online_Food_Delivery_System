@@ -108,5 +108,64 @@ namespace OnlineFoodOrderingSystem.Controllers
             PaymentCard card = m.PaymentCard.FirstOrDefault(x => x.id == id);
             return View("AddCard", card);
         }
+
+        [HttpGet]
+        public ActionResult AddAddress()
+        {
+            Address_ address = new Address_();
+            return View(address);
+        }
+
+        [HttpPost]
+        public ActionResult AddAddress(Address_ address)
+        {
+            Model1 m = new Model1();
+
+            Address_ a = m.Address_.FirstOrDefault(x => x.id == address.id);
+            
+            UserAddress user_address = new UserAddress();
+            user_address.id_address = address.id;
+            user_address.id_user = 1; // TODO: Get this from session information.
+
+            if (a == null)
+            {
+               m.Address_.Add(address);
+               m.UserAddress.Add(user_address);
+            }
+            else
+            {
+                a.address_name = address.address_name;
+                a.city = address.city;
+                a.town = address.town;
+                a.neighborhood = address.neighborhood;
+                a.street = address.street;
+                a.building_name = address.building_name;
+                a.building_no = address.building_no;
+                a.flat_no = address.flat_no;
+            }
+
+            m.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        /*[HttpPost]
+        public ActionResult DeleteAddAddress(PaymentCard card)
+        {
+            Model1 m = new Model1();
+            card = m.PaymentCard.FirstOrDefault(x => x.id == card.id);
+            m.PaymentCard.Remove(card);
+            m.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult UpdateAddAddress(int id)
+        {
+            Model1 m = new Model1();
+            PaymentCard card = m.PaymentCard.FirstOrDefault(x => x.id == id);
+            return View("AddCard", card);
+        }*/
     }
 }

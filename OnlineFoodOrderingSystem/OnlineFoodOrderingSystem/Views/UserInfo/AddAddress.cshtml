@@ -1,0 +1,161 @@
+﻿@using OnlineFoodOrderingSystem.Models
+
+@{
+    ViewBag.Title = "Add Address";
+}
+
+@model Address_
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Address Operations</h4>
+            </div>
+            <div class="card-body">
+                <form action="/UserInfo/AddAddress/" method="post">
+
+                    <!-- TODO: Gain the id_user value from session information.-->
+                    <!-- <input type="hidden" name="id_user" value="1" />-->
+
+                    @if (Model != null)
+                    {
+                        <input type="hidden" name="id" value="@Model.id" />
+                    }
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Address Name</label>
+                                    @if (Model.address_name == null)
+                                    {
+                                        <input type="text" class="form-control" name="address_name" value="">
+
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control" name="address_name" value="@Model.address_name">
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Neighborhood</label>
+                                    @if (Model.neighborhood == null)
+                                    {
+                                        <input type="text" class="form-control" name="neighborhood" value="">
+
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control" name="neighborhood" value="@Model.neighborhood">
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Street</label>
+                                    @if (Model.street == null)
+                                    {
+                                        <input type="text" class="form-control" name="street" value="">
+
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control" name="street" value="@Model.street">
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Building Name</label>
+                                    @if (Model.building_name == null)
+                                    {
+                                        <input type="text" class="form-control" name="building_name" value="">
+
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control" name="building_name" value="@Model.building_name">
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Building No</label>
+                                    @if (Model.building_no == 0)
+                                    {
+                                        <input type="text" class="form-control" name="building_no" value="">
+
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control" name="building_no" value="@Model.building_no">
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Flat No</label>
+                                    @if (Model.flat_no == 0)
+                                    {
+                                        <input type="text" class="form-control" name="flat_no" value="">
+
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control" name="flat_no" value="@Model.flat_no">
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Town</label>
+                                    @if (Model.town == null)
+                                    {
+                                        <input type="text" class="form-control" name="town" value="">
+
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control" name="town" value="@Model.town">
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">City</label>
+                                    @if (Model.city == null)
+                                    {
+                                        <input type="text" class="form-control" name="city" value="">
+
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control" name="city" value="@Model.city">
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary pull-right">Save</button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

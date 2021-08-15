@@ -416,6 +416,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\UserInfo\AddCard.cshtml" />
     <Content Include="Views\ManageCuisines\AddCuisine.cshtml" />
+    <Content Include="Views\UserInfo\AddAddress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
