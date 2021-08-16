@@ -149,12 +149,14 @@ namespace OnlineFoodOrderingSystem.Controllers
             return RedirectToAction("Index");
         }
 
-        /*[HttpPost]
-        public ActionResult DeleteAddAddress(PaymentCard card)
+        [HttpPost]
+        public ActionResult DeleteAddress(Address_ address)
         {
             Model1 m = new Model1();
-            card = m.PaymentCard.FirstOrDefault(x => x.id == card.id);
-            m.PaymentCard.Remove(card);
+
+            address = m.Address_.FirstOrDefault(x => x.id == address.id);
+            
+            m.Address_.Remove(address);
             m.SaveChanges();
 
             return RedirectToAction("Index");
@@ -164,8 +166,8 @@ namespace OnlineFoodOrderingSystem.Controllers
         public ActionResult UpdateAddAddress(int id)
         {
             Model1 m = new Model1();
-            PaymentCard card = m.PaymentCard.FirstOrDefault(x => x.id == id);
-            return View("AddCard", card);
-        }*/
+            Address_ address = m.Address_.FirstOrDefault(x => x.id == id);
+            return View("AddAddress", address);
+        }
     }
 }

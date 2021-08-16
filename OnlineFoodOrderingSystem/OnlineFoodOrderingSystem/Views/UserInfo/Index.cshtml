@@ -87,6 +87,7 @@
                                             <i class="material-icons">edit</i>
                                         </button>
                                     </a>
+                                    <!-- TODO: Fix the bag(when deleting, the id of first record is being used and the first record is deleted).  -->
                                     <!-- Button trigger delete modal -->
                                     <button type="button" rel="tooltip" title="Delete Card" class="btn btn-danger btn-link btn-sm" data-toggle="modal" data-target="#deleteModal">
                                         <i class="material-icons">close</i>
@@ -173,17 +174,40 @@
                             <div class="card-body">
                                 <h5 class="card-title">
                                     @address.address_name
-                                    <a href="/PersonalInformation/AddressEdit/@address.id">
+                                    <a href="/UserInfo/UpdateAddAddress/@address.id">
                                         <button type="button" rel="tooltip" title="Edit Address" class="btn btn-primary btn-link btn-sm">
                                             <i class="material-icons">edit</i>
                                         </button>
                                     </a>
-                                    <a href="/PersonalInformation/AddressDelete/@address.id">
-                                        <button type="button" rel="tooltip" title="Delete Address" class="btn btn-danger btn-link btn-sm">
-                                            <i class="material-icons">close</i>
-                                        </button>
-                                    </a>
+
+                                    <!-- TODO: Fix the bag(when deleting, the id of first record is being used and the first record is deleted).
+                                    <!-- Button trigger delete modal -->
+                                    <button type="button" rel="tooltip" title="Delete Address" class="btn btn-danger btn-link btn-sm" data-toggle="modal" data-target="#deleteAddress">
+                                        <i class="material-icons">close</i>
+                                    </button>
                                 </h5>
+                                <!-- Delete Modal -->
+                                <div class="modal fade" id="deleteAddress" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel">Delete Card</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete the @address.address_name?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form action="/UserInfo/DeleteAddress/@address.id" method="post">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <input type="submit" class="btn btn-danger" name="name" value="Yes" />
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <br />
                                 <form>
                                     <div class="form-group">
