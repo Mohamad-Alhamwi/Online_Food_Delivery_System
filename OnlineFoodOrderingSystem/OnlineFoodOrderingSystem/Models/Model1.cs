@@ -25,7 +25,6 @@ namespace OnlineFoodOrderingSystem.Models
         public virtual DbSet<ProductCategory> ProductCategory { get; set; }
         public virtual DbSet<Report> Report { get; set; }
         public virtual DbSet<Restaurant> Restaurant { get; set; }
-        public virtual DbSet<RestaurantCuisine> RestaurantCuisine { get; set; }
         public virtual DbSet<Role_> Role_ { get; set; }
         public virtual DbSet<User_> User_ { get; set; }
         public virtual DbSet<UserAddress> UserAddress { get; set; }

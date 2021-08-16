@@ -14,12 +14,14 @@ namespace OnlineFoodOrderingSystem.Models
         {
             Menu = new HashSet<Menu>();
             Product = new HashSet<Product>();
-            RestaurantCuisine = new HashSet<RestaurantCuisine>();
         }
 
         public int id { get; set; }
 
         public int id_seller { get; set; }
+
+        public int cuisine_id { get; set; }
+
 
         [Required]
         [StringLength(50)]
@@ -41,9 +43,6 @@ namespace OnlineFoodOrderingSystem.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Product { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RestaurantCuisine> RestaurantCuisine { get; set; }
 
         public virtual User_ User_ { get; set; }
     }
