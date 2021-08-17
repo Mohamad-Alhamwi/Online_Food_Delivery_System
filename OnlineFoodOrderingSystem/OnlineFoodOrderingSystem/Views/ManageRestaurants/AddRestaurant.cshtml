@@ -5,6 +5,8 @@
     ViewBag.Title = "Add Restaurant";
 }
 
+@model Restaurant
+
 
 <div class="row justify-content-center">
     <div class="col-md-6">
@@ -15,9 +17,9 @@
             <div class="card-body">
                 <form action="/ManageRestaurants/AddRestaurant/" method="post">
 
-                    @if (ViewBag.Restaurant != null)
+                    @if (Model != null)
                     {
-                        <input type="hidden" name="id" value="@ViewBag.Restaurant.id" />
+                        <input type="hidden" name="id" value="@Model.id" />
                     }
 
                     <div class="form-group">
@@ -25,28 +27,27 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Restaurant Owner Id</label>
-                                    @if (ViewBag.Restaurant.id_seller == 0)
+                                    @if (Model.restaurant_name == null)
                                     {
                                         <input type="text" class="form-control" name="id_seller" value="">
-
                                     }
                                     else
                                     {
-                                        <input type="hidden" class="form-control" name="id_seller" value="@ViewBag.Restaurant.id_seller">
+                                        <input type="text" class="form-control" name="id_seller" value="@Model.id_seller" disabled>
                                     }
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Restaurant Name</label>
-                                    @if (ViewBag.Restaurant.restaurant_name == null)
+                                    @if (Model.restaurant_name == null)
                                     {
                                         <input type="text" class="form-control" name="restaurant_name" value="">
 
                                     }
                                     else
                                     {
-                                        <input type="text" class="form-control" name="restaurant_name" value="@ViewBag.Restaurant.restaurant_name">
+                                        <input type="text" class="form-control" name="restaurant_name" value="@Model.restaurant_name">
                                     }
                                 </div>
                             </div>
@@ -57,28 +58,28 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">Town</label>
-                                    @if (ViewBag.Restaurant.town == null)
+                                    @if (Model.town == null)
                                     {
                                         <input type="text" class="form-control" name="town" value="">
 
                                     }
                                     else
                                     {
-                                        <input type="text" class="form-control" name="town" value="@ViewBag.Restaurant.town">
+                                        <input type="text" class="form-control" name="town" value="@Model.town">
                                     }
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="bmd-label-floating">City</label>
-                                    @if (ViewBag.Restaurant.city == null)
+                                    @if (Model.city == null)
                                     {
                                         <input type="text" class="form-control" name="city" value="">
 
                                     }
                                     else
                                     {
-                                        <input type="text" class="form-control" name="city" value="@ViewBag.Restaurant.city">
+                                        <input type="text" class="form-control" name="city" value="@Model.city">
                                     }
                                 </div>
                             </div>
@@ -90,7 +91,8 @@
                                 <div class="form-group">
                                     <label for="cuisines">Cuisines</label>
                                     <select id="cuisines" class="form-control" name="cuisine_id">
-                                        
+
+                                        <!-- TODO:  cuisine_name as placeholder-->
                                         <option selected> Choose ...</option>
                                         @foreach (Cuisine cuisine in ViewBag.Cuisines)
                                         {

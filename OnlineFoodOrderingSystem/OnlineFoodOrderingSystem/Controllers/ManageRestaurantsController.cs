@@ -33,10 +33,9 @@ namespace OnlineFoodOrderingSystem.Controllers
 
             ViewBag.SubTitle = "Restaurants";
             ViewBag.Path = "/ManageRestaurants/Index/";
-            ViewBag.Restaurant = restaurant;
             ViewBag.Cuisines = cuisine;
 
-            return View();
+            return View(restaurant);
         }
 
         [HttpPost]
@@ -54,6 +53,7 @@ namespace OnlineFoodOrderingSystem.Controllers
                 r.restaurant_name = restaurant.restaurant_name;
                 r.city = restaurant.city;
                 r.town = restaurant.town;
+                r.cuisine_id = restaurant.cuisine_id;
             }
 
             m.SaveChanges();
@@ -62,22 +62,27 @@ namespace OnlineFoodOrderingSystem.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteCuisine(Cuisine cuisine)
+        public ActionResult DeleteRestaurant(Restaurant restaurant)
         {
             Model1 m = new Model1();
-            cuisine = m.Cuisine.FirstOrDefault(x => x.id == cuisine.id);
-            m.Cuisine.Remove(cuisine);
+            restaurant = m.Restaurant.FirstOrDefault(x => x.id == restaurant.id);
+            m.Restaurant.Remove(restaurant);
             m.SaveChanges();
 
             return RedirectToAction("Index");
         }
 
         [HttpGet]
-        public ActionResult UpdateCuisine(int id)
+        public ActionResult UpdateRestaurant(int id)
         {
             Model1 m = new Model1();
-            Cuisine cuisine = m.Cuisine.FirstOrDefault(x => x.id == id);
-            return View("AddCuisine", cuisine);
+
+            Restaurant restaurant = m.Restaurant.FirstOrDefault(x => x.id == id);
+
+            List<Cuisine> cuisine = m.Cuisine.ToList();
+            ViewBag.Cuisines = cuisine;
+
+            return View("AddRestaurant", restaurant);
         }
     }
 }

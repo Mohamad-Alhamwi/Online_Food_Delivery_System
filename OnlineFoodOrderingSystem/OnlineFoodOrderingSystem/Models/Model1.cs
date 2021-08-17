@@ -44,11 +44,6 @@ namespace OnlineFoodOrderingSystem.Models
                 .WithRequired(e => e.Category)
                 .HasForeignKey(e => e.id_category);
 
-            modelBuilder.Entity<Cuisine>()
-                .HasMany(e => e.RestaurantCuisine)
-                .WithRequired(e => e.Cuisine)
-                .HasForeignKey(e => e.id_cuisine);
-
             modelBuilder.Entity<Menu>()
                 .Property(e => e.total_price)
                 .HasPrecision(10, 2);
@@ -124,11 +119,6 @@ namespace OnlineFoodOrderingSystem.Models
 
             modelBuilder.Entity<Restaurant>()
                 .HasMany(e => e.Product)
-                .WithRequired(e => e.Restaurant)
-                .HasForeignKey(e => e.id_restaurant);
-
-            modelBuilder.Entity<Restaurant>()
-                .HasMany(e => e.RestaurantCuisine)
                 .WithRequired(e => e.Restaurant)
                 .HasForeignKey(e => e.id_restaurant);
 
