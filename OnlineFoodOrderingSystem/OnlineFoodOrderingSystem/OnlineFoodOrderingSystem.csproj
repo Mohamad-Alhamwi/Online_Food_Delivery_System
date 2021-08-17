@@ -154,7 +154,6 @@
     <Compile Include="Models\Order_.cs" />
     <Compile Include="Models\PaymentCard.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\Role_.cs" />
@@ -417,6 +416,7 @@
     <Content Include="Views\ManageCuisines\AddCuisine.cshtml" />
     <Content Include="Views\UserInfo\AddAddress.cshtml" />
     <Content Include="Views\ManageRestaurants\AddRestaurant.cshtml" />
+    <Content Include="Views\ManageCategories\AddCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

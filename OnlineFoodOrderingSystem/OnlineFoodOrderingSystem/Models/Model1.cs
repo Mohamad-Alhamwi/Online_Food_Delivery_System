@@ -22,7 +22,6 @@ namespace OnlineFoodOrderingSystem.Models
         public virtual DbSet<OrderState> OrderState { get; set; }
         public virtual DbSet<PaymentCard> PaymentCard { get; set; }
         public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<ProductCategory> ProductCategory { get; set; }
         public virtual DbSet<Report> Report { get; set; }
         public virtual DbSet<Restaurant> Restaurant { get; set; }
         public virtual DbSet<Role_> Role_ { get; set; }
@@ -40,9 +39,16 @@ namespace OnlineFoodOrderingSystem.Models
                 .HasForeignKey(e => e.id_address);
 
             modelBuilder.Entity<Category>()
-                .HasMany(e => e.ProductCategory)
+                .HasMany(e => e.Product)
                 .WithRequired(e => e.Category)
-                .HasForeignKey(e => e.id_category);
+                .HasForeignKey(e => e.category_id)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Cuisine>()
+                .HasMany(e => e.Restaurant)
+                .WithRequired(e => e.Cuisine)
+                .HasForeignKey(e => e.cuisine_id)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Menu>()
                 .Property(e => e.total_price)
@@ -96,11 +102,6 @@ namespace OnlineFoodOrderingSystem.Models
                 .WithRequired(e => e.Product)
                 .HasForeignKey(e => e.id_product)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Product>()
-                .HasMany(e => e.ProductCategory)
-                .WithRequired(e => e.Product)
-                .HasForeignKey(e => e.id_product);
 
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.UserFavourite)

@@ -20,9 +20,6 @@ namespace OnlineFoodOrderingSystem.Models
 
         public int id_seller { get; set; }
 
-        public int cuisine_id { get; set; }
-
-
         [Required]
         [StringLength(50)]
         public string restaurant_name { get; set; }
@@ -37,6 +34,10 @@ namespace OnlineFoodOrderingSystem.Models
 
         [Column(TypeName = "image")]
         public byte[] logo { get; set; }
+
+        public int cuisine_id { get; set; }
+
+        public virtual Cuisine Cuisine { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Menu> Menu { get; set; }

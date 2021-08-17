@@ -1,0 +1,64 @@
+﻿@using OnlineFoodOrderingSystem.Models
+
+@{
+    ViewBag.Title = "Add Category";
+}
+
+@model Category
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header card-header-info">
+                <h4 class="card-title">Category Operations</h4>
+            </div>
+            <div class="card-body">
+                <form action="/ManageCategories/AddCategory/" method="post">
+                    @if (Model != null)
+                    {
+                        <input type="hidden" name="id" value="@Model.id" />
+                    }
+                    <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Category Name</label>
+                                @if (Model.category_name == null)
+                                {
+                                    <input type="text" class="form-control" name="category_name" value="">
+                                }
+                                else
+                                {
+                                    <input type="text" class="form-control" name="category_name" value="@Model.category_name">
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label> </label>
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Catogory Description</label>
+                                    @if (Model.catogory_description == null)
+                                    {
+                                        <textarea class="form-control" name="catogory_description" rows="3"></textarea>
+                                    }
+                                    else
+                                    {
+                                        <textarea class="form-control" name="catogory_description" rows="3">@Model.catogory_description</textarea>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <button type="submit" class="btn btn-info pull-right">Save</button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

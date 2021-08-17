@@ -33,7 +33,6 @@ namespace OnlineFoodOrderingSystem.Models
         [StringLength(320)]
         public string email { get; set; }
 
-        [Required]
         [StringLength(100)]
         public string pwd { get; set; }
 

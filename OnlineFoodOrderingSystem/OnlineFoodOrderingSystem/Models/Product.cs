@@ -14,7 +14,6 @@ namespace OnlineFoodOrderingSystem.Models
         {
             MenuItem = new HashSet<MenuItem>();
             OrderItem = new HashSet<OrderItem>();
-            ProductCategory = new HashSet<ProductCategory>();
             UserFavourite = new HashSet<UserFavourite>();
             UserRating = new HashSet<UserRating>();
         }
@@ -42,6 +41,10 @@ namespace OnlineFoodOrderingSystem.Models
 
         public DateTime? updated_at { get; set; }
 
+        public int category_id { get; set; }
+
+        public virtual Category Category { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MenuItem> MenuItem { get; set; }
 
@@ -49,9 +52,6 @@ namespace OnlineFoodOrderingSystem.Models
         public virtual ICollection<OrderItem> OrderItem { get; set; }
 
         public virtual Restaurant Restaurant { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductCategory> ProductCategory { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserFavourite> UserFavourite { get; set; }
