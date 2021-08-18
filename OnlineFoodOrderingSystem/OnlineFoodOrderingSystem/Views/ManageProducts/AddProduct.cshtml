@@ -1,0 +1,131 @@
+﻿@using OnlineFoodOrderingSystem.Models
+
+@{
+    ViewBag.Title = "AddProduct";
+}
+
+<h4>AddProduct</h4>
+
+@model Product
+
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header card-header-info">
+                <h4 class="card-title">Product Operations</h4>
+            </div>
+            <div class="card-body">
+                <form action="/ManageProducts/AddProduct/" method="post">
+                    @if (Model != null)
+                    {
+                        <input type="hidden" name="id" value="@Model.id" />
+                    }
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Restaurant Id</label>
+                                    @if (Model.product_name == null)
+                                    {
+                                        <input type="text" class="form-control" name="id_restaurant" value="">
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control" name="id_restaurant" value="@Model.id_restaurant" disabled>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Product Name</label>
+                                    @if (Model.product_name == null)
+                                    {
+                                        <input type="text" class="form-control" name="product_name" value="">
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control" name="product_name" value="@Model.product_name">
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Price</label>
+                                    @if (Model.product_name == null)
+                                    {
+                                        <input type="text" class="form-control" name="price" value="">
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control" name="price" value="@Model.price">
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Weight</label>
+                                    @if (Model.product_name == null)
+                                    {
+                                        <input type="text" class="form-control" name="product_weight" value="">
+                                    }
+                                    else
+                                    {
+                                        <input type="text" class="form-control" name="product_weight" value="@Model.product_weight">
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="cuisines">Cuisines</label>
+                                    <select id="cuisines" class="form-control" name="category_id">
+
+                                        <!-- TODO:  category_name as placeholder-->
+                                        <option selected> Choose ...</option>
+                                        @foreach (Category category in ViewBag.Categories)
+                                        {
+                                            <option value="@category.id"> @category.category_name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label> </label>
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Product Description</label>
+                                        @if (Model.product_description == null)
+                                        {
+                                            <textarea class="form-control" name="product_description" rows="3"></textarea>
+                                        }
+                                        else
+                                        {
+                                            <textarea class="form-control" name="product_description" rows="3">@Model.product_description</textarea>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-info pull-right">Save</button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
