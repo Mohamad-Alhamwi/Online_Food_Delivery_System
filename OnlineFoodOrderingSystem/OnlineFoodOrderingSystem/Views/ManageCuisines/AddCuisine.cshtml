@@ -18,23 +18,38 @@
                     {
                         <input type="hidden" name="id" value="@Model.id" />
                     }
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Cuisine Name</label>
-                                    @if (Model.cuisine_name == null)
-                                    {
-                                        <input type="text" class="form-control" name="cuisine_name" value="">
-                                    }
-                                    else
-                                    {
-                                        <input type="text" class="form-control" name="cuisine_name" value="@Model.cuisine_name">
-                                    }
-                                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Cuisine Name</label>
+                                @if (Model.cuisine_name == null)
+                                {
+                                    <input type="text" class="form-control" name="cuisine_name" value="">
+                                }
+                                else
+                                {
+                                    <input type="text" class="form-control" name="cuisine_name" value="@Model.cuisine_name">
+                                }
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Cuisine Image</label>
+                                @if (Model.cuisine_image == null)
+                                {
+                                    <input type="text" class="form-control" name="cuisine_image" value="">
+                                }
+                                else
+                                {
+                                    <input type="text" class="form-control" name="cuisine_image" value="@Model.cuisine_image">
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
                     <button type="submit" class="btn btn-info pull-right">Save</button>
                     <div class="clearfix"></div>
                 </form>

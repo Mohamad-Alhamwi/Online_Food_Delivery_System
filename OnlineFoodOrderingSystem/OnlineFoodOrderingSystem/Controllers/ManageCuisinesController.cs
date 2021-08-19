@@ -42,6 +42,7 @@ namespace OnlineFoodOrderingSystem.Controllers
             else
             {
                 c.cuisine_name = cuisine.cuisine_name;
+                c.cuisine_image = cuisine.cuisine_image;
             }
 
             m.SaveChanges();

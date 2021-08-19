@@ -21,6 +21,9 @@ namespace OnlineFoodOrderingSystem.Models
         [StringLength(50)]
         public string cuisine_name { get; set; }
 
+        [Column(TypeName = "image")]
+        public byte[] cuisine_image { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Restaurant> Restaurant { get; set; }
     }
