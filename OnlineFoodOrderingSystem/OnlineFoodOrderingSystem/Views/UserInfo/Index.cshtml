@@ -51,21 +51,22 @@
                         <div class="clearfix"></div>
                     </form>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header card-header-primary">
-                    <h4 class="card-title">
-                        Payment Cards
-                        <a href="/UserInfo/AddCard/">
-                            <button type="button" rel="tooltip" title="Add Card" class="btn btn-white btn-link btn-sm pull-right">
-                                <i class="material-icons">add</i>
-                            </button>
-                        </a>
-                    </h4>
-                    <p class="card-category">Add your payment cards.</p>
+
+                <div class="col-sm-4">
+                    <div class="card bg-light">
+                        <div class="card-body mx-auto">
+                            <h5 class="card-text lead text-primary">
+                                Payment Cards
+                                <a href="/UserInfo/AddCard/">
+                                    <button type="button" rel="tooltip" title="Add Card" class="btn btn-primary btn-link btn-sm text-right">
+                                        <i class="material-icons">add</i>
+                                    </button>
+                                </a>
+                            </h5>
+                        </div>
+                    </div>
                 </div>
+
                 @foreach (PaymentCard card in ViewBag.UserCards)
                 {
                     if (ViewBag.UserCards.Count == 0 || card == null)
@@ -143,21 +144,22 @@
                         </div>
                     }
                 }
-            </div>
-        </div>
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header card-header-primary">
-                    <h4 class="card-title">
-                        Addresses
-                        <a href="/UserInfo/AddAddress/">
-                            <button type="button" rel="tooltip" title="Add Address" class="btn btn-white btn-link btn-sm pull-right">
-                                <i class="material-icons">add</i>
-                            </button>
-                        </a>
-                    </h4>
-                    <p class="card-category">Add your addresse(s).</p>
+
+                <div class="col-sm-4">
+                    <div class="card bg-light">
+                        <div class="card-body mx-auto">
+                            <h5 class="card-text lead text-primary">
+                                Add Address
+                                <a href="/UserInfo/AddAddress/">
+                                    <button type="button" rel="tooltip" title="Add Address" class="btn btn-primary btn-link btn-sm text-right">
+                                        <i class="material-icons">add</i>
+                                    </button>
+                                </a>
+                            </h5>
+                        </div>
+                    </div>
                 </div>
+
                 @foreach (Address_ address in ViewBag.UserAddresses)
                 {
                     if (ViewBag.UserAddresses.Count == 0 || address == null)
@@ -181,7 +183,7 @@
                                     </a>
 
                                     <!-- TODO: Fix the bag(when deleting, the id of first record is being used and the first record is deleted).
-                                    <!-- Button trigger delete modal -->
+                        <!-- Button trigger delete modal -->
                                     <button type="button" rel="tooltip" title="Delete Address" class="btn btn-danger btn-link btn-sm" data-toggle="modal" data-target="#deleteAddress">
                                         <i class="material-icons">close</i>
                                     </button>
