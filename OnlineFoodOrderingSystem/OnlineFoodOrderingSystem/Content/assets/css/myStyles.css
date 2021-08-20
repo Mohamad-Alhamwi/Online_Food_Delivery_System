@@ -3,3 +3,69 @@
     list-style: none;
     margin-top: 10px;
 }
+
+/*   Start Home Page Styles.   */
+
+.homepage-headings 
+{
+    margin-left: 12px;
+}
+
+.homepage hr 
+{
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-top: -5px;
+}
+
+.homepage a {
+    color: #818181;
+}
+
+.homepage .scrolling-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.homepage .cuisine-card 
+{
+    flex: 0 0 auto;
+}
+
+.homepage .restaurants-container .restaurants-container-header 
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.homepage .restaurants-container .restaurants-container-header button 
+{
+    margin-right: 12px;
+}
+
+.homepage .restaurants-container .restaurants-container-body 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 12px;
+    margin-left: 12px;
+}
+
+.homepage .restaurants-container .restaurants-container-body .restaurants-container-body-content 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.homepage .restaurants-container .restaurants-container-body .restaurants-container-body-content img 
+{
+    width: 100%;
+}
+
+/*   End Home Page Styles.   */
