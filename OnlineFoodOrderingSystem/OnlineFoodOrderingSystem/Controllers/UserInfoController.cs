@@ -14,17 +14,18 @@ namespace OnlineFoodOrderingSystem.Controllers
         {
             Model1 m = new Model1();
 
-            // To find the user by id.
-            int id = 1;  // This will come from session information.
+            // Using cookies information to get the user id.
+            string user_email = HttpContext.User.Identity.Name;
+            int user_id = m.User_.FirstOrDefault(x => x.email == user_email).id;
 
             // Return the user information.
-            User_ user = m.User_.FirstOrDefault(x => x.id == id);
+            User_ user = m.User_.FirstOrDefault(x => x.id == user_id);
 
             // Return the user's payment cards information.
-            List<PaymentCard> userPaymentCards = m.PaymentCard.Where(x => x.id_user == id).ToList();
+            List<PaymentCard> userPaymentCards = m.PaymentCard.Where(x => x.id_user == user_id).ToList();
 
             // Return the user's addresses information.
-            List<UserAddress> addresses = m.UserAddress.Where(x => x.id_user == id).ToList();
+            List<UserAddress> addresses = m.UserAddress.Where(x => x.id_user == user_id).ToList();
             List<Address_> userAddresses = new List<Address_>();
 
             for (int counter = 0; counter < addresses.Count; ++ counter)
@@ -63,6 +64,14 @@ namespace OnlineFoodOrderingSystem.Controllers
         [HttpGet]
         public ActionResult AddCard()
         {
+            Model1 m = new Model1();
+
+            // Using cookies information to get the user id.
+            string user_email = HttpContext.User.Identity.Name;
+            int user_id = m.User_.FirstOrDefault(x => x.email == user_email).id;
+
+            ViewBag.UserID = user_id;
+
             PaymentCard card = new PaymentCard();
             return View(card);
         }
@@ -125,7 +134,11 @@ namespace OnlineFoodOrderingSystem.Controllers
             
             UserAddress user_address = new UserAddress();
             user_address.id_address = address.id;
-            user_address.id_user = 1; // TODO: Get this from session information.
+
+            // Using cookies information to get the user id.
+            string user_email = HttpContext.User.Identity.Name;
+            int user_id = m.User_.FirstOrDefault(x => x.email == user_email).id;
+            user_address.id_user = user_id;
 
             if (a == null)
             {

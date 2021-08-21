@@ -15,9 +15,6 @@
             <div class="card-body">
                 <form action="/UserInfo/AddAddress/" method="post">
 
-                    <!-- TODO: Gain the id_user value from session information.-->
-                    <!-- <input type="hidden" name="id_user" value="1" />-->
-
                     @if (Model != null)
                     {
                         <input type="hidden" name="id" value="@Model.id" />
