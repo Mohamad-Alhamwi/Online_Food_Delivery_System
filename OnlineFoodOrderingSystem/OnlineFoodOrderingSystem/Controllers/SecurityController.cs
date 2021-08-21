@@ -14,12 +14,14 @@ namespace OnlineFoodOrderingSystem.Controllers
         // GET: Security
         
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Login(User_ user)
         {
             Model1 m = new Model1();
@@ -41,7 +43,7 @@ namespace OnlineFoodOrderingSystem.Controllers
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Home");
+            return RedirectToAction("Index", "Home");
         }
 
     }
