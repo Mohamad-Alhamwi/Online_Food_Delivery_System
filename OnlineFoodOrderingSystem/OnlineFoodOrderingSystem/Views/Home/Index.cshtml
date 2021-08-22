@@ -28,10 +28,29 @@
     <div class="restaurants-container">
         <div class="restaurants-container-header">
             <p class="h3 homepage-headings">Restaurants (@ViewBag.Restaurants.Count)</p>
-            <!-- Button trigger Filter modal -->
-            <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-lg" data-toggle="modal" data-target="#" data-cardid="" data-cardname="">
-                Filter By
-            </button>
+    
+            <!-- Button trigger Filter menu -->
+            <div class="dropdownFilter">
+                <button onclick="myFunction()" class="filterButton btn btn-danger btn-link btn-lg">Filter By</button>
+                <div id="myDropdownListFilter" class="dropdownFilterContent">
+                    <form>
+                        <div class="form-group row">
+                            <div class="col-sm-2">Cuisines</div>
+                            <hr />
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    @foreach (Cuisine cuisine in ViewBag.Cuisines)
+                                    {
+                                        <input type="checkbox" id="" name="cuisinesIDs" value="@cuisine.id">
+                                        <label for="cuisinesIDs"> @cuisine.cuisine_name</label><br>
+                                    }
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Apply</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <hr />
 
@@ -41,20 +60,55 @@
                 <div class="card">
                     <div class="row restaurants-container-body-content">
                         <div class="col-sm-2">
-                            <div>
-                                <img src="https://media.istockphoto.com/photos/varied-food-carbohydrates-protein-vegetables-fruits-dairy-legumes-on-picture-id1218254547?b=1&k=6&m=1218254547&s=170667a&w=0&h=EXwwoHJ3wI0H2jDfoFhqOiIo2c4cL0y7R8Gop3iIO30=" alt="Restaurant Photo" class="img-fluid img-thumbnail">
-                                <!--<img src="@restaurant.restaurantLogo" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">-->
-                            </div>
+                            <a href="/Home/DisplayMenusByRestaurants/@restaurant.restaurantId">
+                                <div>
+                                    <img src="https://media.istockphoto.com/photos/varied-food-carbohydrates-protein-vegetables-fruits-dairy-legumes-on-picture-id1218254547?b=1&k=6&m=1218254547&s=170667a&w=0&h=EXwwoHJ3wI0H2jDfoFhqOiIo2c4cL0y7R8Gop3iIO30=" alt="Restaurant Photo" class="img-fluid img-thumbnail">
+                                    <!--<img src="@restaurant.restaurantLogo" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">-->
+                                </div>
+                            </a>
                         </div>
                         <div class="col-sm-9">
                             <div>
-                                <p class="h4">@restaurant.restaurantName (@restaurant.restaurantTown)</p>
+                                <p class="h4">@restaurant.restaurantName</p>
                                 <p class="h5">@restaurant.cuisineName</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            }
+             }
         </div>
     </div>
 </div>
+
+
+@section scripts
+{
+
+    <script>
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction()
+        {
+            document.getElementById("myDropdownListFilter").classList.toggle("showList");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event)
+        {
+            if (!event.target.matches('.filterButton'))
+            {
+                var dropdowns = document.getElementsByClassName("dropdownFilterContent");
+                var i;
+                for (i = 0; i < dropdowns.length; i++)
+                {
+                    var openDropdown = dropdowns[i];
+
+                    if (openDropdown.classList.contains('showList'))
+                    {
+                        openDropdown.classList.remove('showList');
+                    }
+                }
+            }
+        }
+    </script>
+}

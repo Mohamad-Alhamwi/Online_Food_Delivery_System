@@ -18,11 +18,38 @@
     margin-top: -5px;
 }
 
-.homepage a {
+.homepage a 
+{
     color: #818181;
 }
 
-.homepage .scrolling-wrapper {
+/* Start filter dropdpwn list styles. */
+.dropdownFilter 
+{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdownFilterContent 
+{
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    width: 210px;
+}
+
+.showList 
+{
+    display: block;
+}
+/*  End filter dropdpwn list styles.  */
+
+.homepage .scrolling-wrapper 
+{
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -69,3 +96,8 @@
 }
 
 /*   End Home Page Styles.   */
+
+
+
+
+
