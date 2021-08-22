@@ -1,0 +1,47 @@
+﻿@using OnlineFoodOrderingSystem.Models;
+
+@{
+    ViewBag.Title = "Menus";
+}
+
+@model List<Product>
+
+<div id="fh5co-menus" data-section="menu">
+    <div class="container">
+        <div class="row text-center fh5co-heading row-padded justify-content-center">
+            <div class="col-md-8 col-md-offset-2">
+                <h2 class="heading to-animate">Food Menu</h2>
+                <p class="sub-heading to-animate">Lorem ipsum dolor sit amet. Id beatae repellat eos eaque accusamus et reiciendis magni.</p>
+            </div>
+        </div>
+        <div class="row row-padded justify-content-center">
+            <div class="col-md-8">
+                <div class="fh5co-food-menu to-animate-2">
+                    <ul>
+                        @foreach (var product in Model)
+                        {
+                            <li>
+                                <div class="fh5co-food-desc">
+                                    <figure>
+                                        <img src="https://media.istockphoto.com/photos/varied-food-carbohydrates-protein-vegetables-fruits-dairy-legumes-on-picture-id1218254547?b=1&k=6&m=1218254547&s=170667a&w=0&h=EXwwoHJ3wI0H2jDfoFhqOiIo2c4cL0y7R8Gop3iIO30=" class="img-responsive" alt="productPhoto">
+                                        <!--<img src="@product.product_image" class="img-responsive" alt="productPhoto">-->
+                                    </figure>
+                                    <div>
+                                        <h3>@product.product_name</h3>
+                                        <p>@product.product_description</p>
+                                    </div>
+                                </div>
+                                <div class="fh5co-food-pricing">
+                                    $@product.price
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

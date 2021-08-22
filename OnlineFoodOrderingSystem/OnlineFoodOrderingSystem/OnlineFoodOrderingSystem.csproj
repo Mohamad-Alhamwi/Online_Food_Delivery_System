@@ -165,9 +165,11 @@
     <Compile Include="Models\User_.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\UserRoleProvider.cs" />
+    <Compile Include="ViewModels\ProductDetails.cs" />
     <Compile Include="ViewModels\RestaurantCuisine.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\css\additionalStyle.css" />
     <Content Include="Content\assets\css\material-dashboard-rtl.css" />
     <Content Include="Content\assets\css\material-dashboard.css" />
     <Content Include="Content\assets\css\material-dashboard.min.css" />
@@ -423,6 +425,7 @@
     <Content Include="Views\ManageProducts\AddProduct.cshtml" />
     <Content Include="Views\Home\DisplayMenusByCuisines.cshtml" />
     <Content Include="Views\Security\Login.cshtml" />
+    <Content Include="Views\Home\DisplayMenusByRestaurants.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

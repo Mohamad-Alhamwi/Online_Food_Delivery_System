@@ -1,0 +1,177 @@
+.fh5co-heading .heading {
+  font-size: 50px;
+  font-style: italic;
+  position: relative;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 768px) {
+  .fh5co-heading .heading {
+    font-size: 30px;
+  }
+}
+.fh5co-heading .heading:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 40px;
+  height: 2px;
+  left: 50%;
+  background: #fb6e14;
+  margin-left: -20px;
+}
+.fh5co-heading .sub-heading {
+  font-size: 20px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 768px) {
+  .fh5co-heading .sub-heading {
+    font-size: 18px;
+  }
+}
+#fh5co-menus {
+  padding: 7em 0;
+}
+@media screen and (max-width: 768px) {
+  #fh5co-menus {
+    padding: 5em 0;
+  }
+}
+#fh5co-menus .fh5co-heading .heading {
+  position: relative;
+  padding-top: 30px !important;
+}
+#fh5co-menus .fh5co-heading .heading:before, #fh5co-menus .fh5co-heading .heading::before {
+  height: 64px;
+  width: 64px;
+  position: absolute;
+  content: "";
+  background: url(../images/0401-vegan.png) no-repeat;
+  top: 0;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -32px;
+}
+#fh5co-menus .fh5co-heading .sub-heading {
+  color: #a99c92;
+}
+#fh5co-menus .fh5co-food-menu {
+  float: left;
+  width: 100%;
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 768px) {
+  #fh5co-menus .fh5co-food-menu {
+    margin-bottom: 30px;
+    float: left;
+    width: 100%;
+    clear: none !important;
+  }
+}
+#fh5co-menus .fh5co-food-menu h2 {
+  margin-bottom: 50px;
+  font-style: italic;
+  position: relative;
+}
+#fh5co-menus .fh5co-food-menu h2.fh5co-drinks {
+  padding-left: 50px;
+}
+#fh5co-menus .fh5co-food-menu h2.fh5co-drinks:before {
+  background: url(../images/0301-pina-colada.png) no-repeat;
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 64px;
+  height: 64px;
+}
+#fh5co-menus .fh5co-food-menu h2.fh5co-dishes {
+  padding-left: 80px;
+}
+#fh5co-menus .fh5co-food-menu h2.fh5co-dishes:before {
+  background: url(../images/0302-steak.png) no-repeat;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 64px;
+  height: 45px;
+}
+#fh5co-menus .fh5co-food-menu ul {
+  padding: 0;
+  margin: 0;
+}
+#fh5co-menus .fh5co-food-menu ul li {
+  padding: 0 0 20px 0;
+  margin: 0 0 20px 0;
+  border-bottom: 1px dotted #ccc;
+  display: block;
+  float: left;
+  width: 100%;
+}
+#fh5co-menus .fh5co-food-menu ul li .fh5co-food-desc {
+  clear: both;
+  float: left;
+  width: 80%;
+}
+#fh5co-menus .fh5co-food-menu ul li .fh5co-food-desc > figure {
+  width: 20%;
+  float: left;
+  position: relative;
+  margin-right: 4%;
+}
+#fh5co-menus .fh5co-food-menu ul li .fh5co-food-desc > figure img {
+  max-width: 100%;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  margin-bottom: 0;
+}
+#fh5co-menus .fh5co-food-menu ul li .fh5co-food-desc > div {
+  width: 75%;
+  float: left;
+  position: relative;
+  font-size: 14px;
+  line-height: 1.5;
+}
+#fh5co-menus .fh5co-food-menu ul li .fh5co-food-desc > div p {
+  margin: 0;
+}
+#fh5co-menus .fh5co-food-menu ul li .fh5co-food-desc > div h3 {
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-size: 20px;
+  color: #000;
+}
+#fh5co-menus .fh5co-food-menu ul li .fh5co-food-pricing {
+  float: right;
+  width: 20%;
+  text-align: right;
+  font-size: 20px;
+  color: #fb6e14;
+}
+
+#fh5co-container {
+  z-index: 2;
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  #fh5co-container{
+    -moz-transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -o-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+
+.js .to-animate, .js .to-animate-2 {
+  opacity: 0;
+}
+
+.row-padded {
+  padding-bottom: 40px;
+}
