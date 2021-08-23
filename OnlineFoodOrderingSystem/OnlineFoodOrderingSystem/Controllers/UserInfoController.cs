@@ -100,14 +100,20 @@ namespace OnlineFoodOrderingSystem.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteCard(PaymentCard card)
+        public int DeleteCard(PaymentCard card)
         {
             Model1 m = new Model1();
             card = m.PaymentCard.FirstOrDefault(x => x.id == card.id);
             m.PaymentCard.Remove(card);
-            m.SaveChanges();
-
-            return RedirectToAction("Index");
+            try
+            {
+                m.SaveChanges();
+                return 1;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
         
         [HttpGet]
@@ -163,16 +169,23 @@ namespace OnlineFoodOrderingSystem.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteAddress(Address_ address)
+        public int DeleteAddress(Address_ address)
         {
             Model1 m = new Model1();
 
             address = m.Address_.FirstOrDefault(x => x.id == address.id);
             
             m.Address_.Remove(address);
-            m.SaveChanges();
-
-            return RedirectToAction("Index");
+            
+            try
+            {
+                m.SaveChanges();
+                return 1;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
 
         [HttpGet]

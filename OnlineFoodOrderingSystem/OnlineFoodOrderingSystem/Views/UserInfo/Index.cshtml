@@ -287,11 +287,19 @@
             $.ajax({
                 type: "POST",
                 url: "/UserInfo/DeleteCard/" + id,
-                success: window.location.replace("/UserInfo/Index"),
-                error: function () {
-                    $(".modal-body>p.error").html("Error occured while deleting.");
-                    $(".modal-body>p.message").html("");
-                    $(".deleteModalButton").hide();
+                success: function (state)
+                {
+                    if (state == 1)
+                    {
+                        window.location.replace("/UserInfo/Index");
+                    }
+                    else
+                    {
+                        $(".modal-body>p.error").html("Error occured while deleting.");
+                        $(".modal-body>p.message").html("");
+                        $(".deleteAddressModalButton").hide();
+                    }
+
                 }
             });
         });
@@ -312,11 +320,19 @@
             $.ajax({
                 type: "POST",
                 url: "/UserInfo/DeleteAddress/" + id,
-                success: window.location.replace("/UserInfo/Index"),
-                error: function () {
-                    $(".modal-body>p.error").html("Error occured while deleting.");
-                    $(".modal-body>p.message").html("");
-                    $(".deleteAddressModalButton").hide();
+                success: function (state)
+                {
+                    if (state == 1)
+                    {
+                        window.location.replace("/UserInfo/Index");
+                    }
+                    else
+                    {
+                        $(".modal-body>p.error").html("Error occured while deleting.");
+                        $(".modal-body>p.message").html("");
+                        $(".deleteAddressModalButton").hide();
+                    }
+
                 }
             });
         });
