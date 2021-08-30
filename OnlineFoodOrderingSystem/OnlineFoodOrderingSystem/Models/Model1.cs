@@ -13,6 +13,7 @@ namespace OnlineFoodOrderingSystem.Models
         }
 
         public virtual DbSet<Address_> Address_ { get; set; }
+        public virtual DbSet<Basket> Basket { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Cuisine> Cuisine { get; set; }
         public virtual DbSet<Menu> Menu { get; set; }
@@ -70,10 +71,6 @@ namespace OnlineFoodOrderingSystem.Models
                 .HasForeignKey(e => e.id_menu);
 
             modelBuilder.Entity<Order_>()
-                .Property(e => e.total_price)
-                .HasPrecision(10, 2);
-
-            modelBuilder.Entity<Order_>()
                 .HasMany(e => e.OrderItem)
                 .WithRequired(e => e.Order_)
                 .HasForeignKey(e => e.id_order);
@@ -90,6 +87,11 @@ namespace OnlineFoodOrderingSystem.Models
             modelBuilder.Entity<Product>()
                 .Property(e => e.product_weight)
                 .HasPrecision(10, 2);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.Basket)
+                .WithRequired(e => e.Product)
+                .HasForeignKey(e => e.id_product);
 
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.MenuItem)
@@ -129,6 +131,11 @@ namespace OnlineFoodOrderingSystem.Models
                 .HasForeignKey(e => e.id_role);
 
             modelBuilder.Entity<User_>()
+                .HasMany(e => e.Basket)
+                .WithRequired(e => e.User_)
+                .HasForeignKey(e => e.id_user);
+
+            modelBuilder.Entity<User_>()
                 .HasMany(e => e.Order_)
                 .WithRequired(e => e.User_)
                 .HasForeignKey(e => e.id_customer);
@@ -143,11 +150,6 @@ namespace OnlineFoodOrderingSystem.Models
                 .WithOptional(e => e.User_)
                 .HasForeignKey(e => e.id_admin)
                 .WillCascadeOnDelete();
-
-            modelBuilder.Entity<User_>()
-                .HasMany(e => e.Restaurant)
-                .WithRequired(e => e.User_)
-                .HasForeignKey(e => e.id_seller);
 
             modelBuilder.Entity<User_>()
                 .HasMany(e => e.UserAddress)

@@ -20,11 +20,10 @@ namespace OnlineFoodOrderingSystem.Models
 
         public int id_state { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string delivery_address { get; set; }
 
-        public DateTime ordered_at { get; set; }
+        public DateTime? ordered_at { get; set; }
 
         public DateTime? es_delivery_at { get; set; }
 
@@ -33,7 +32,8 @@ namespace OnlineFoodOrderingSystem.Models
         [StringLength(50)]
         public string note { get; set; }
 
-        public decimal total_price { get; set; }
+        [StringLength(50)]
+        public string total_price { get; set; }
 
         public virtual User_ User_ { get; set; }
 

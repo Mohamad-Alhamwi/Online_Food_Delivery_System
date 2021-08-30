@@ -15,6 +15,8 @@ namespace OnlineFoodOrderingSystem.Models
 
         public int id_user { get; set; }
 
+        public virtual Product Product { get; set; }
+
         public virtual User_ User_ { get; set; }
     }
 }

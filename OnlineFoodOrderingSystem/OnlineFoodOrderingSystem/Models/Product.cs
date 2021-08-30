@@ -12,6 +12,7 @@ namespace OnlineFoodOrderingSystem.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
+            Basket = new HashSet<Basket>();
             MenuItem = new HashSet<MenuItem>();
             OrderItem = new HashSet<OrderItem>();
             UserFavourite = new HashSet<UserFavourite>();
@@ -42,6 +43,9 @@ namespace OnlineFoodOrderingSystem.Models
         public DateTime? updated_at { get; set; }
 
         public int category_id { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Basket> Basket { get; set; }
 
         public virtual Category Category { get; set; }
 

@@ -24,6 +24,10 @@ namespace OnlineFoodOrderingSystem.Models
         [Column(TypeName = "image")]
         public byte[] cuisine_image { get; set; }
 
+        public DateTime created_at { get; set; }
+
+        public DateTime? updated_at { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Restaurant> Restaurant { get; set; }
     }
