@@ -17,7 +17,7 @@ CREATE TABLE User_(
 
 CREATE TABLE Role_(
 	id INT IDENTITY(1,1),
-	role_name NVARCHAR(50) NOT NULL,
+	role_name NVARCHAR(1) NOT NULL,
 	created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	updated_at DATETIME,
 	CONSTRAINT UN_RoleName UNIQUE (role_name),
@@ -64,7 +64,6 @@ CREATE TABLE PaymentCard(
 	card_no NVARCHAR(50) NOT NULL,
 	expiration_data DATETIME NOT NULL,
 	cvv INT NOT NULL,
-	CONSTRAINT UN_CardName UNIQUE (card_name),
 	FOREIGN KEY (id_user) REFERENCES User_(id) ON DELETE CASCADE,
 	PRIMARY KEY (id)
 );
@@ -82,6 +81,7 @@ CREATE TABLE Report(
 CREATE TABLE Restaurant(
 	id INT IDENTITY(1,1),
 	id_seller INT NOT NULL,
+	id_cuisine INT NOT NULL,
 	restaurant_name NVARCHAR(50) NOT NULL,
 	city NVARCHAR(50) NOT NULL,
 	town NVARCHAR(50) NOT NULL,
@@ -89,6 +89,7 @@ CREATE TABLE Restaurant(
 	CONSTRAINT UN_RestaurantName UNIQUE (restaurant_name),
 	CONSTRAINT UN_SellerId UNIQUE (id_seller),
 	FOREIGN KEY (id_seller) REFERENCES User_(id) ON DELETE CASCADE,
+	FOREIGN KEY (id_cuisine) REFERENCES Cuisine(id),
 	PRIMARY KEY (id)
 );
 
@@ -97,17 +98,8 @@ CREATE TABLE Cuisine(
 	cuisine_name NVARCHAR(50) NOT NULL,
 	created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	updated_at DATETIME,
+	cuisine_image IMAGE,
 	CONSTRAINT UN_CuisineName UNIQUE (cuisine_name),
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE RestaurantCuisine(
-	id INT IDENTITY(1,1),
-	id_restaurant INT NOT NULL,
-	id_cuisine INT NOT NULL,
-	CONSTRAINT UN_Cuisine UNIQUE (id_restaurant, id_cuisine),
-	FOREIGN KEY (id_restaurant) REFERENCES Restaurant(id) ON DELETE CASCADE,
-	FOREIGN KEY (id_cuisine) REFERENCES Cuisine(id) ON DELETE CASCADE,
 	PRIMARY KEY (id)
 );
 
@@ -135,6 +127,7 @@ CREATE TABLE Order_(
 CREATE TABLE Product(
 	id INT IDENTITY(1,1),
 	id_restaurant INT NOT NULL,
+	id_category INT NOT NULL,
 	product_name NVARCHAR(50) NOT NULL,
 	price DECIMAL(10,2) NOT NULL,
 	product_weight DECIMAL(10,2) NOT NULL,
@@ -143,7 +136,8 @@ CREATE TABLE Product(
 	created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	updated_at DATETIME,
 	PRIMARY KEY (id),
-	FOREIGN KEY (id_restaurant) REFERENCES Restaurant(id) ON DELETE CASCADE
+	FOREIGN KEY (id_restaurant) REFERENCES Restaurant(id) ON DELETE CASCADE,
+	FOREIGN KEY (id_category) REFERENCES Category(id)	
 );
 
 CREATE TABLE Category(
@@ -153,16 +147,6 @@ CREATE TABLE Category(
 	created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	updated_at DATETIME,
 	CONSTRAINT UN_CategoryName UNIQUE (category_name),
-	PRIMARY KEY (id)
-);
-
-CREATE TABLE ProductCategory(
-	id INT IDENTITY(1,1),
-	id_product INT NOT NULL,
-	id_category INT NOT NULL,
-	CONSTRAINT UN_ProductCategory UNIQUE (id_product, id_category),
-	FOREIGN KEY (id_product) REFERENCES Product(id) ON DELETE CASCADE,
-	FOREIGN KEY (id_category) REFERENCES Category(id) ON DELETE CASCADE,
 	PRIMARY KEY (id)
 );
 
@@ -228,4 +212,13 @@ CREATE TABLE UserRating(
 	FOREIGN KEY (id_menu) REFERENCES Menu(id),
 	FOREIGN KEY (id_user) REFERENCES USER_(id) ON DELETE CASCADE,
 	PRIMARY KEY (id)
+);
+
+CREATE TABLE Basket(
+    id INT IDENTITY (1, 1) NOT NULL,
+    id_product INT NOT NULL,
+    id_user INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_user) REFERENCES User_(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_product) REFERENCES Product(id) ON DELETE CASCADE
 );
