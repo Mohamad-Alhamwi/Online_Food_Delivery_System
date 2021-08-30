@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\FavouritesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Controllers\ManageReportsController.cs" />
     <Compile Include="Controllers\ManageRestaurantsController.cs" />
     <Compile Include="Controllers\ManageUsersController.cs" />
+    <Compile Include="Controllers\RestaurantOrdersController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
@@ -145,6 +147,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Address_.cs" />
+    <Compile Include="Models\Basket.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Cuisine.cs" />
     <Compile Include="Models\Menu.cs" />
@@ -426,6 +429,8 @@
     <Content Include="Views\Home\DisplayMenusByCuisines.cshtml" />
     <Content Include="Views\Security\Login.cshtml" />
     <Content Include="Views\Home\DisplayMenusByRestaurants.cshtml" />
+    <Content Include="Views\Basket\Index.cshtml" />
+    <Content Include="Views\RestaurantOrders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
