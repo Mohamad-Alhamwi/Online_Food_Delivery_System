@@ -61,14 +61,21 @@ namespace OnlineFoodOrderingSystem.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteProduct(Product product)
+        public int DeleteProduct(Product product)
         {
             Model1 m = new Model1();
             product = m.Product.FirstOrDefault(x => x.id == product.id);
             m.Product.Remove(product);
-            m.SaveChanges();
 
-            return RedirectToAction("Index");
+            try
+            {
+                m.SaveChanges();
+                return 1;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
 
         [HttpGet]

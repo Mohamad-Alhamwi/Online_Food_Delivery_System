@@ -7,6 +7,28 @@
 
 @model List<Product>
 
+@section body
+{
+    <!-- Delete Product Modal -->
+    <div class="modal fade delete-modal" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="delete-modal-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" data-border-top="multi">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="delete-modal-label">Delete Product</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="message"></p>
+                    <p class="error"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger deleteModalButton">Yes</button>
+                </div>
+            </div> <!-- /.modal-content -->
+        </div> <!-- /.modal-dialog -->
+    </div> <!-- /.modal -->
+}
+
 <div class="container-fluid">
     <div class="row  justify-content-center">
         <div class="col-lg-6 col-md-12">
@@ -35,49 +57,26 @@
                         <tbody>
                             @foreach (Product product in Model)
                             {
-                            <tr>
-                                <td>@product.id</td>
-                                <td>@product.product_name</td>
-                                <td>@product.price</td>
-                                <td>@product.product_weight</td>
+                                <tr>
+                                    <td>@product.id</td>
+                                    <td>@product.product_name</td>
+                                    <td>@product.price</td>
+                                    <td>@product.product_weight</td>
 
-                                <td>
-                                    <a href="/ManageProducts/UpdateProduct/@product.id">
-                                        <button type="button" rel="tooltip" title="Update Product" class="btn btn-success btn-link btn-sm">
-                                            <i class="material-icons">edit</i>
+                                    <td>
+                                        <a href="/ManageProducts/UpdateProduct/@product.id">
+                                            <button type="button" rel="tooltip" title="Update Product" class="btn btn-success btn-link btn-sm">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <!-- Button trigger delete modal -->
+                                        <button type="button" rel="tooltip" title="Delete Product" class="btn btn-danger btn-link btn-sm openModal" data-toggle="modal" data-target="#delete-modal" data-productid="@product.id" data-productname="@product.product_name">
+                                            <i class="material-icons">close</i>
                                         </button>
-                                    </a>
-                                </td>
-                                <td>
-                                    <!-- Button trigger delete modal -->
-                                    <button type="button" rel="tooltip" title="Delete Product" class="btn btn-danger btn-link btn-sm" data-toggle="modal" data-target="#deleteProduct">
-                                        <i class="material-icons">close</i>
-                                    </button>
-                                </td>
-                            </tr>
-                                <!-- TODO: Fix the bag(when deleting, the id of first record is being used and the first record is deleted).  -->
-                                <!-- Delete Modal -->
-                                <div class="modal fade" id="deleteProduct" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteModalLabel">Delete Category</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Are you sure you want to delete the @product.product_name product?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <form action="/ManageProducts/DeleteProduct/@product.id" method="post">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <input type="submit" class="btn btn-danger" name="name" value="Yes" />
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -87,3 +86,39 @@
     </div>
 </div>
 
+
+@section scripts
+{
+    <script>
+        $(".openModal").click(function ()
+        {
+            $(".modal-body>p.error").html("");
+            var product_name = $(this).data("productname");
+            $(".modal-body>p.message").html("Are you sure you want to delete the category with name " + product_name);
+            var id = $(this).data("productid");
+            $(".deleteModalButton").data("productid", id);
+        });
+
+        $(".deleteModalButton").click(function ()
+        {
+            var id = $(this).data("productid");
+            $.ajax({
+                type: "POST",
+                url: "/ManageProducts/DeleteProduct/" + id,
+                success: function (state)
+                {
+                    if (state == 1)
+                    {
+                        window.location.replace("/ManageProducts/Index");
+                    }
+                    else
+                    {
+                        $(".modal-body>p.error").html("Error occured while deleting.");
+                        $(".modal-body>p.message").html("");
+                        $(".deleteModalButton").hide();
+                    }
+                }
+            });
+        });
+    </script>
+}

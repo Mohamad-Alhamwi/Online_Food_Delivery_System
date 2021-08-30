@@ -56,14 +56,21 @@ namespace OnlineFoodOrderingSystem.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteCategory(Category category)
+        public int DeleteCategory(Category category)
         {
             Model1 m = new Model1();
             category = m.Category.FirstOrDefault(x => x.id == category.id);
             m.Category.Remove(category);
-            m.SaveChanges();
 
-            return RedirectToAction("Index");
+            try
+            {
+                m.SaveChanges();
+                return 1;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
 
         [HttpGet]
