@@ -39,7 +39,7 @@ namespace OnlineFoodOrderingSystem.Controllers
 
             return View();
         }
-
+        /*  TODO:  Fix the bug of [Authorize] here.*/
         [HttpGet]
         public ActionResult DisplayMenusByCuisines(Cuisine cuisine)
         {

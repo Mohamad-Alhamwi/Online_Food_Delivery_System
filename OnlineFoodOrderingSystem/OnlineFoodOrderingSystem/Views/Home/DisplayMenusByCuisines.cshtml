@@ -4,6 +4,7 @@
     ViewBag.Title = "Menus";
 }
 
+
 <div id="fh5co-menus" data-section="menu">
     <div class="container">
         <div class="row text-center fh5co-heading row-padded justify-content-center">
@@ -32,6 +33,10 @@
                                 </div>
                                 <div class="fh5co-food-pricing">
                                     $@product.productPrice
+                                    <!-- Button trigger delete modal -->
+                                    <button type="button" rel="tooltip" title="Add to basket" class="btn btn-primary btn-link btn-sm text-right addToBasketButton" data-productid="@product.productId" data-cuisineid="@product.cuisineId">
+                                        <i class="material-icons">add</i>
+                                    </button>
                                 </div>
                             </li>
                         }
@@ -42,3 +47,31 @@
     </div>
 </div>
 
+
+
+@section scripts
+{
+    <script>
+        $(".addToBasketButton").click(function () {
+            var id = $(this).data("productid");
+            var cuisine_id = $(this).data("cuisineid");
+            $.ajax({
+                type: "POST",
+                url: "/Basket/AddToBasket/" + id,
+                success: function (state)
+                {
+                    if (state == 1)
+                    {
+                        window.location.replace("/Home/DisplayMenusByCuisines/" + cuisine_id);
+                        // TODO: Display success message.
+                    }
+                    else
+                    {
+                        // TODO: Display error message.
+                    }
+
+                }
+            });
+        });
+    </script>
+}
